@@ -34,12 +34,12 @@ func (f *forwarder) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Printf("%s %d available ips: %v", r.URL.Path, len(addrs), addrs)
+	log.Printf("%s %d available list of ips: %v", r.URL.Path, len(addrs), addrs)
 	ip := addrs[rand.Intn(len(addrs))]
 	log.Printf("%s I choose %s", r.URL.Path, ip)
 
 	url := fmt.Sprintf("http://%s:%d%s", ip, f.port, r.URL.Path)
-	log.Printf("%s Calling %s", r.URL.Path, url)
+	log.Printf("%s Calling this %s", r.URL.Path, url)
 
 	if err = copy(url, ip, w); err != nil {
 		log.Println("Error", err)

@@ -42,7 +42,7 @@ func (f *forwarder) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	log.Printf("%s Calling %s", r.URL.Path, url)
 
 	if err = copy(url, ip, w); err != nil {
-		log.Println("Error", err)
+		log.Println("Error is", err)
 		http.Error(w, err.Error(), 500)
 		return
 	}

@@ -34,7 +34,7 @@ func (f *forwarder) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Printf("%s %d are the available ips: %v", r.URL.Path, len(addrs), addrs)
+	log.Printf("%s %d and here we have the available ips: %v", r.URL.Path, len(addrs), addrs)
 	ip := addrs[rand.Intn(len(addrs))]
 	log.Printf("%s I choose %s", r.URL.Path, ip)
 

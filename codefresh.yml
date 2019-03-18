@@ -15,4 +15,4 @@ steps:
     - SLACK_WEBHOOK_URL="${{SLACK_WEBHOOK_URL}}"
     - SLACK_USER_NAME='Codefresh Syntax Test'
     - SLACK_ICON_EMOJI=":eyes:"
-    - SLACK_PRETEXT='UGC3HT1AN'
+    - SLACK_PRETEXT="UGC3HT1AN"

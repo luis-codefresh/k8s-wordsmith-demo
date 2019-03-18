@@ -15,4 +15,4 @@ steps:
     - SLACK_WEBHOOK_URL="${{SLACK_WEBHOOK_URL}}"
     - SLACK_USER_NAME='Codefresh Syntax Test'
     - SLACK_ICON_EMOJI=":eyes:"
-    - "SLACK_PRETEXT=commiter: <@${{SLACK_MENTION}}>"
+    - "SLACK_PRETEXT=The RUN_TEST selenium tests has finished running in codefresh for branch ${{CF_BRANCH}}. \nThis is the build: ${{CF_BUILD_URL}}. \nThis is the report: https://s3.amazonaws.com/hb-build-artifacts/codefresh/selenium/RUN_TEST/my-report.html \nThe Build have RUN_TEST. \nBuild link formatting <${{CF_BUILD_URL}}|Build Link> \ncommiter: <@${{SLACK_MENTION}}>"

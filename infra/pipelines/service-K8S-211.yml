@@ -1,0 +1,22 @@
+version: '1.0'
+steps:
+  main_clone:
+    title: 'Cloning main repository...'
+    type: git-clone
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: 'FR101'
+    git: my-git-provider
+  convertCommiterSlackName:
+    title: convert from commiter to slack mention
+    image: bash
+    commands:
+      - bash -c 'declare -A SLACK_MAPPING=([web-flow]=UGC3HT1AN [francisco-codefresh]=UAV425A95) && cf_export SLACK_MENTION=${SLACK_MAPPING[$CF_COMMIT_AUTHOR]}'
+      - echo "commiter is $CF_COMMIT_AUTHOR"
+  SendSlackMessage:
+    title: Send slack messge
+    image: cloudposse/slack-notifier
+    environment:
+    - SLACK_WEBHOOK_URL=${{SLACK_WEBHOOK_URL}}
+    - SLACK_USER_NAME='Codefresh Syntax Test'
+    - SLACK_ICON_EMOJI=":eyes:"
+    - SLACK_PRETEXT="<@UGC3HT1AN>"
